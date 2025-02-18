@@ -5,6 +5,8 @@
 #define LED_G_PIN 11
 #define LED_B_PIN 12
 
+#define BTN_A 5
+
 int main()
 {
     stdio_init_all();
@@ -20,6 +22,11 @@ int main()
     // Initialize the blue LED pin
     gpio_init(LED_B_PIN);
     gpio_set_dir(LED_B_PIN, GPIO_OUT);
+
+    // Initialize the button A pin
+    gpio_init(BTN_A);
+    gpio_set_dir(BTN_A, GPIO_IN);
+    gpio_pull_up(BTN_A);
 
     while (true) {
         printf("Hello, world!\n");
