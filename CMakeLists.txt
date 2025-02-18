@@ -35,7 +35,9 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(adc-joystick adc-joystick.c )
+file(GLOB LIBSOURCES "lib/*.c")
+
+add_executable(adc-joystick adc-joystick.c ${LIBSOURCES})
 
 pico_set_program_name(adc-joystick "adc-joystick")
 pico_set_program_version(adc-joystick "0.1")
@@ -55,7 +57,9 @@ target_include_directories(adc-joystick PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(adc-joystick 
-        
+    hardware_adc
+    hardware_pwm
+    hardware_i2c
         )
 
 pico_add_extra_outputs(adc-joystick)
